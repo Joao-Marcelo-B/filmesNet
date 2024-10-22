@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Filmes</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h1>Cadastro de Filmes</h1>
+
+    <form th:action="@{'/filmes/formulario'}" method="POST">
+        <input type="hidden" name="_method" value="put" th:if="${filme!=null}">
+        <input type="hidden" name="id" th:value="${filme?.id}">
+
+        <div>
+            <label for="nome">Nome do Filme:</label>
+            <input type="text" id="nome" name="nome" th:value="${filme?.nome}" required>
+
+        </div>
+
+        <div>
+            <label for="genero">Gênero:</label>
+            <select id="genero" name="genero">
+                <option value="">Selecione um gênero</option>
+                <th:block th:each="gen : ${listaGenero}">
+                    <option th:value="${gen.id}"
+                            th:text="${gen.nome}"></option>
+                </th:block>
+            </select>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <input type="submit" th:value="${filme == null ? 'Cadastrar Filme' : 'Atualizar Filme'}">
+            <a href="/menus/principal">Menu Principal</a>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>

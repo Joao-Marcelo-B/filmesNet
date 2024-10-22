@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Lista de Generos</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h1>Lista de Generos - CodeCraft
+        <a href="/generos/formulario">Novo</a>
+    </h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome Genero</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="genero : ${lista}">
+            <td th:text="${genero.nome}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="display: flex; justify-content: center;">
+        <a href="/generos/formulario">Novo</a>
+        <a href="/menus/principal">Menu Principal</a>
+    </div>
+</div>
+</body>
+</html>
