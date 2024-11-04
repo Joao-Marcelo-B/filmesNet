@@ -60,4 +60,15 @@ public class filmesController {
         repository.save(filme);
         return "redirect:/filmes/listagem";
     }
+
+    @GetMapping("/buscar")
+    public String buscaFilmes(Long idGenero, Model model) {
+        if(idGenero != null) {
+            model.addAttribute("filmes", repository.findByGenero_Id(idGenero));
+            model.addAttribute("idGenero", idGenero);
+        }
+        model.addAttribute("generos", repositoryGenero.findAll());
+        return "/filmes/buscar";
+    }
 }
+

@@ -89,3 +89,18 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #104213;
 }
+
+select {
+    padding: 10px;
+    border: 1px solid #104213;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+select:focus {
+    border-color: #104213;
+    outline: none;
+}
